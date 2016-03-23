@@ -1,0 +1,182 @@
+//EXPEDIA Prep
+
+//Reverse A string
+<script type="text/javascript">
+
+function reverse(str) {
+    var rev = '';
+    for (var i = str.length; i >= 0; i--)
+        rev += str[i];
+    return rev;
+}
+reverse("hakunamatata")
+
+
+//Factorial done recursively
+function factorialize(num) {
+    if (num === 0) {
+        return 1;
+    }
+    return num * factorialize(num - 1);
+}
+factorialize(5);
+
+//2D Array. Return the largest value from an array of sub arrays as an array
+function largestOfFour(arr) {
+    //An variable that holds on to the results(largest value of each sub-array)	
+    var results = [];
+    //An outer-loop that keeps track of traversing through the array.
+    for (var n = 0; n < arr.length; n++) {
+        //Create a second variable to hold the largest number. This must be outside an inner loop so it won't be reassigned until we find a larger number.
+        var largestNumber = 0;
+        //The inner loop that traverses through the sub arrays
+        for (var sb = 0; sb < arr[n].length; sb++) {
+            //If the value of the sub array is greater than the largestNumber, the new largest number becomes that value of that sub-array.
+            if (arr[n][sb] > largestNumber) {
+                largestNumber = arr[n][sb];
+            }
+        }
+        //After the inner loop, save the largest number in the corresponding position inside of the results array.
+        results[n] = largestNumber;
+    }
+    //finally, after the exhaustion of the outer for-loop, we return the result array.
+    return results;
+}
+
+//Confirm the end of a string. 
+//Pass in a string and a target that allows for a test
+function end(str, target) {
+    //Return a true or false value based on whether the above conditions are met.
+    //substr() checks from the end of the target string, hence the negative and compares it to the target value
+    //Returns true if values match. Returnst false if values don't match.	
+    return str.substr(-target.length) === target;
+}
+
+//Repeat string x number of times
+function repeat(str, num) {
+    var accumulatedStr = '';
+
+    while (num > 0) {
+        accumulatedStr += str;
+        num--;
+    }
+
+    return accumulatedStr;
+}
+
+//Truncate a string (Does not work)
+
+function truncate(str, num) {
+
+    if (str.length <= num){
+        return str;
+    }
+
+    if (num <= 3){
+        return str.substr(0, num) + "...";
+    }
+
+    return str.substr(0, num - 3) + "...";
+}
+
+//Chunky Monkey (Given an array and an argument that tells you how many divisions to be made of the array.)
+
+function chunk(arr, size) {
+    // Break it up.
+    var newArr = [];
+    var i = 0;
+
+    while (i < arr.length) {
+        newArr.push(arr.slice(i, i + size));
+        i += size;
+    }
+    return newArr;
+}
+chunk(["a", "b", "c", "d"], 2);
+
+
+//Slasher (removing certain number of elements from an array using slice method)
+function slasher(arr, howMany) {
+
+  //Return string after the amount chopped off.
+  return arr.slice(howMany);
+
+}
+
+//Alternative Slasher(splice method)
+function slasher(arr, howMany) {
+  // remove the head
+  arr.splice(0,howMany);
+  //return the remaining or the tail  \__/(**)-<
+  return arr;
+}
+
+//This function should return true if elements from the first string of the array equal to elements in the second string of the array
+function mutation(arr) {
+  var test = arr[1].toLowerCase();
+  var target = arr[0].toLowerCase();
+  for (i=0;i<test.length;i++) {
+    if (target.indexOf(test[i]) < 0)
+      return false;
+  }
+  return true;
+ }
+
+ //Where does a number belong in an array(return the index.)
+ function where(arr, num) {
+  arr.push(num);
+  arr.sort(function(a, b)
+           {return a-b;}
+          );
+  return arr.indexOf(num);
+ }
+
+ //Implementation of A BST
+
+ //Definition of the node class
+ function Node(data, left, right){
+    this.data = data;
+    this.left = left;
+    this.right = right;
+    this.show = show
+ }
+ 
+ function show(){
+    return this.data
+ }
+
+ function BST(){
+    this.root = null;
+    this.insert = insert;
+    this.inOrder = inOrder; 
+ }
+
+ function insert(data){
+    var n = new Node(data, null, null);
+    if (this.root == null){
+        this.root = n;
+    }
+    else {
+        var current = this.root;
+        var parent;
+        while (true){
+            parent = current;
+            if (data < current.data){
+                current = current.left;
+                if (current == null){
+                    parent.left = n;
+                    break;
+                }
+            }
+            else{
+                current = current.right;
+                if (current == null){
+                    parent.right = n;
+                    break;
+                }
+            }
+        }
+    }
+ }
+
+</script>
